@@ -25,7 +25,15 @@ class LottoMoneyValidatorTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"0", "999", "1"})
+    @ValueSource(strings = {"abcd", "금액", "one", "!@#", "1000원", "천원", "one thousand"})
+    void 숫자가_아닌_다른_값을_입력하면_예외_발생(String money) {
+        Assertions.assertThatThrownBy(() -> LottoMoneyValidator.validateThousandUnit(money))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("정상적인 금액을 입력해주세요");
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"", " ", "금액", ""})
     void 한개도_사지_않으면_예외_발생(String money) {
         Assertions.assertThatThrownBy(() -> LottoMoneyValidator.validateThousandUnit(money))
                 .isInstanceOf(IllegalArgumentException.class)
