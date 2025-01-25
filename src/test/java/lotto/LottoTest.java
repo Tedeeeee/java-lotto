@@ -1,9 +1,11 @@
 package lotto;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -28,4 +30,14 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    void Number를_6개_가진_로또_번호가_만들어진다() {
+        List<Integer> validNumbers = List.of(1, 2, 3, 4, 5, 6);
+
+        List<Number> validate = validNumbers.stream().map(Number::new).toList();
+
+        Lotto lotto = new Lotto(validNumbers);
+
+        Assertions.assertThat(lotto.getNumbers()).isEqualTo(validate);
+    }
 }
