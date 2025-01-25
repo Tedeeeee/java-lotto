@@ -4,6 +4,10 @@ public class LottoMoneyValidator {
 
     public static int validateThousandUnit(String inputMoney) {
 
+        if (inputMoney.contains(".")) {
+            throw new IllegalArgumentException("소수점 값은 입력할 수 없습니다");
+        }
+
         int money = 0;
         try {
             money = Integer.parseInt(inputMoney);
