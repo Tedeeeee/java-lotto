@@ -25,10 +25,14 @@ public class Number {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
-        Number number1 = (Number) o;
-        return number == number1.number;
+    public boolean equals(Object compare) {
+        if (this == compare) {
+            return true;
+        }
+        if (!(compare instanceof Number compareNumber)) {
+            return false;
+        }
+        return number == compareNumber.number;
     }
 
     @Override
