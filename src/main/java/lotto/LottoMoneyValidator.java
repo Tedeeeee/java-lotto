@@ -10,7 +10,11 @@ public class LottoMoneyValidator {
             throw new IllegalArgumentException("양수의 금액을 입력해주세요");
         }
 
-        if (money % 1000 > 0) {
+        if ((money / 1000) <= 0) {
+            throw new IllegalArgumentException("로또를 한 개 이상 구매해주세요");
+        }
+
+        if ((money % 1000) > 0) {
             throw new IllegalArgumentException("천원 단위의 금액을 입력해주세요");
         }
 

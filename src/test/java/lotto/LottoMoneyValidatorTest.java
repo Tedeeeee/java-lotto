@@ -1,6 +1,7 @@
 package lotto;
 
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -16,12 +17,19 @@ class LottoMoneyValidatorTest {
                 .hasMessage("천원 단위의 금액을 입력해주세요");
     }
 
-    @ParameterizedTest
-    @ValueSource(strings = {"-1000"})
-    void 음수의_돈이_들어오면_예외_발생(String money) {
-        Assertions.assertThatThrownBy(() -> LottoMoneyValidator.validateThousandUnit(money))
+    @Test
+    void 음수의_돈이_들어오면_예외_발생() {
+        Assertions.assertThatThrownBy(() -> LottoMoneyValidator.validateThousandUnit("-1000"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("양수의 금액을 입력해주세요");
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"0", "999", "1"})
+    void 한개도_사지_않으면_예외_발생(String money) {
+        Assertions.assertThatThrownBy(() -> LottoMoneyValidator.validateThousandUnit(money))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("로또를 한 개 이상 구매해주세요");
     }
 
     @ParameterizedTest
