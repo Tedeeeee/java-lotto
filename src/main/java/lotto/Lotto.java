@@ -3,6 +3,10 @@ package lotto;
 import java.util.*;
 
 public class Lotto {
+    private static final int LOTTO_NUMBER_SIZE = 6;
+    private static final String LOTTO_MIN_SIZE_ERROR = "로또 번호는 6개여야 합니다";
+    private static final String DUPLICATE_LOTTO_NUMBER_ERROR = "로또 번호는 중복이 될 수 없습니다";
+
     private final List<Number> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -25,16 +29,16 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 6개여야 합니다.");
+        int size = numbers.size();
+        if (size != LOTTO_NUMBER_SIZE) {
+            throw new IllegalArgumentException(LOTTO_MIN_SIZE_ERROR);
         }
     }
 
     private void duplicateValidation(List<Integer> numbers) {
-        Set<Integer> duplicates = new HashSet<>(numbers);
-
-        if (duplicates.size() != 6) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 중복이 될 수 없습니다");
+        int size = new HashSet<>(numbers).size();
+        if (size < LOTTO_NUMBER_SIZE) {
+            throw new IllegalArgumentException(DUPLICATE_LOTTO_NUMBER_ERROR);
         }
     }
 
