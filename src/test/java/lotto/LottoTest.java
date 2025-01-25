@@ -40,4 +40,15 @@ class LottoTest {
         Assertions.assertThat(lotto.getNumbers()).isEqualTo(validate);
     }
 
+    @Test
+    void 로또의_6개의_숫자는_오름차순으로_정렬되어야_한다() {
+        List<Integer> descValidNumbers = List.of(6, 5, 4, 3, 2, 1);
+
+        Lotto lotto = new Lotto(descValidNumbers);
+
+        List<Integer> ascValidNumbers = List.of(1, 2, 3, 4, 5, 6);
+        List<Number> validate = ascValidNumbers.stream().map(Number::new).toList();
+
+        Assertions.assertThat(lotto.getNumbers()).isEqualTo(validate);
+    }
 }
