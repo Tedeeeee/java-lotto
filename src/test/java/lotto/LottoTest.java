@@ -34,10 +34,10 @@ class LottoTest {
     void Number를_6개_가진_로또_번호가_만들어진다() {
         List<Integer> validNumbers = List.of(1, 2, 3, 4, 5, 6);
 
-        List<Number> validate = validNumbers.stream().map(Number::new).toList();
-
         Lotto lotto = new Lotto(validNumbers);
 
+        List<Number> validate = validNumbers.stream().map(Number::new).toList();
         Assertions.assertThat(lotto.getNumbers()).isEqualTo(validate);
     }
+
 }

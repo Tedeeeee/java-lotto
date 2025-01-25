@@ -8,14 +8,13 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         duplicateValidation(numbers);
+        this.numbers = makeNumbers(numbers);
+    }
 
-        List<Number> makeLotto = new ArrayList<>();
-
-        for (Integer number : numbers) {
-            makeLotto.add(new Number(number));
-        }
-
-        this.numbers = makeLotto;
+    private List<Number> makeNumbers(List<Integer> numbers) {
+        return numbers.stream()
+                .map(Number::new)
+                .toList();
     }
 
     private void validate(List<Integer> numbers) {
