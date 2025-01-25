@@ -17,6 +17,14 @@ class LottoMoneyValidatorTest {
     }
 
     @ParameterizedTest
+    @ValueSource(strings = {"-1000"})
+    void 음수의_돈이_들어오면_예외_발생(String money) {
+        Assertions.assertThatThrownBy(() -> LottoMoneyValidator.validateThousandUnit(money))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("양수의 금액을 입력해주세요");
+    }
+
+    @ParameterizedTest
     @CsvSource(value = {"1000, 1", "2000, 2"})
     void 정상적인_금액을_입력하면_로또의_갯수를_반환(String money, int lottoCount) {
         Assertions.assertThat(LottoMoneyValidator.validateThousandUnit(money))
