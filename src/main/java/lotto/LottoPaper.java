@@ -13,7 +13,7 @@ public class LottoPaper {
     }
 
     public static LottoPaper createWithCount(String inputMoney, LottoNumberGenerator numberGenerator) {
-        int lottoCount = LottoMoneyValidator.validateThousandUnit(inputMoney);
+        int lottoCount = LottoMoneyValidator.calculateLottoCount(inputMoney);
         return new LottoPaper(generateLottoList(lottoCount, numberGenerator));
     }
 
