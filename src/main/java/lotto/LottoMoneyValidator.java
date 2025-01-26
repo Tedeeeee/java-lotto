@@ -28,16 +28,18 @@ public class LottoMoneyValidator {
             throw new IllegalArgumentException("소수점 값은 입력할 수 없습니다");
         }
 
+        int value = 0;
         try {
-            int value = Integer.parseInt(input);
+            value = Integer.parseInt(input);
 
-            if (value < 0) {
-                throw new IllegalArgumentException("양수의 금액을 입력해주세요");
-            }
-
-            return value;
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("정상적인 금액을 입력해주세요");
         }
+
+        if (value < 0) {
+            throw new IllegalArgumentException("양수의 금액을 입력해주세요");
+        }
+
+        return value;
     }
 }

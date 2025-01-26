@@ -1,6 +1,9 @@
 package lotto;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Objects;
+import java.util.Set;
 
 public class Lotto {
     private static final int LOTTO_NUMBER_SIZE = 6;
@@ -48,13 +51,13 @@ public class Lotto {
 
         lottoSet.retainAll(answerLottoSet);
 
-        int correctCount = lottoSet.size();
+        int correctNumberCount = lottoSet.size();
 
-        if (correctCount == 5 && numbers.contains(bonusNumber)) {
-            correctCount++;
+        if (lottoSet.size() == 5 && numbers.contains(bonusNumber)) {
+            correctNumberCount = 7;
         }
 
-        return correctCount;
+        return correctNumberCount;
     }
 
     public List<Number> getNumbers() {

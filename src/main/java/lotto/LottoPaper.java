@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LottoPaper {
-    private List<Lotto> lottos;
+    private final List<Lotto> lottos;
 
     public LottoPaper(List<Lotto> lottos) {
         this.lottos = lottos;
@@ -28,9 +28,13 @@ public class LottoPaper {
     }
 
     public List<Integer> compareAnswerLottoNumbers(Lotto answerLotto, Number bonusNumber) {
-        return lottos.stream()
-                .map(lotto -> lotto.countMatchingNumbers(answerLotto, bonusNumber))
-                .toList();
+
+        List<Integer> correctNumbers = new ArrayList<>();
+
+        for (Lotto lotto : lottos) {
+            correctNumbers.add(lotto.countMatchingNumbers(answerLotto, bonusNumber));
+        }
+        return correctNumbers;
     }
 
     public List<Lotto> getLottos() {
