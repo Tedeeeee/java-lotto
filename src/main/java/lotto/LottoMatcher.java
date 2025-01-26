@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class LottoMatcher {
@@ -18,5 +19,9 @@ public class LottoMatcher {
     public void insertBonusNumber(String inputBonusNumber) {
         int bonusNumber = LottoMoneyValidator.validateBonusNumber(inputBonusNumber);
         this.bonusNumber = new Number(bonusNumber);
+    }
+
+    public List<Integer> countMatchingNumbers(LottoPaper lottoPaper) {
+        return lottoPaper.compareAnswerLottoNumbers(answerLotto);
     }
 }

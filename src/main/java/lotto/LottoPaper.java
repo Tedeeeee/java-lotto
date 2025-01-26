@@ -27,6 +27,12 @@ public class LottoPaper {
         return makeLottoList;
     }
 
+    public List<Integer> compareAnswerLottoNumbers(Lotto answerLotto) {
+        return lottos.stream()
+                .map(lotto -> lotto.countMatchingNumbers(answerLotto))
+                .toList();
+    }
+
     public List<Lotto> getLottos() {
         return lottos;
     }

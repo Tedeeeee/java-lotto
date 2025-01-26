@@ -42,6 +42,15 @@ public class Lotto {
         }
     }
 
+    public int countMatchingNumbers(Lotto compareLotto) {
+        Set<Number> lottoSet = new HashSet<>(this.numbers);
+        Set<Number> answerLottoSet = new HashSet<>(compareLotto.numbers);
+
+        lottoSet.retainAll(answerLottoSet);
+
+        return lottoSet.size();
+    }
+
     public List<Number> getNumbers() {
         return numbers;
     }
