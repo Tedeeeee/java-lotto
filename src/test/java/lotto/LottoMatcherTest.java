@@ -39,7 +39,6 @@ class LottoMatcherTest {
     @MethodSource("provideLottoListAndAnswerLotto")
     void 제작된_로또_번호와_정답_번호와_맞춰서_몇개_맞췄는지_확인(LottoPaper lottoPaper, Lotto answerLotto, List<Integer> expected) {
         LottoMatcher lottoMatcher = new LottoMatcher(answerLotto);
-        lottoMatcher.insertBonusNumber("7");
 
         Assertions.assertThat(lottoMatcher.countMatchingNumbers(lottoPaper)).isEqualTo(expected);
     }
@@ -60,5 +59,7 @@ class LottoMatcherTest {
                 )
         );
     }
+
+
 
 }
