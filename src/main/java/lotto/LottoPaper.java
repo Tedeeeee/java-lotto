@@ -28,7 +28,6 @@ public class LottoPaper {
     }
 
     public List<Integer> compareAnswerLottoNumbers(Lotto answerLotto, Number bonusNumber) {
-
         List<Integer> correctNumbers = new ArrayList<>();
 
         for (Lotto lotto : lottos) {

@@ -23,12 +23,12 @@ public class LottoMatcher {
     }
 
     public Map<String, Integer> countMatchingNumbers(LottoPaper lottoPaper) {
-        List<Integer> integers = lottoPaper.compareAnswerLottoNumbers(answerLotto, bonusNumber);
+        List<Integer> correctNumbers = lottoPaper.compareAnswerLottoNumbers(answerLotto, bonusNumber);
 
         Map<String, Integer> matchingNumbers = initializeWinningMap();
 
-        for (Integer integer : integers) {
-            correctNumberMapping(matchingNumbers, integer);
+        for (Integer correctCount : correctNumbers) {
+            correctNumberMapping(matchingNumbers, correctCount);
         }
 
         return matchingNumbers;
@@ -44,8 +44,8 @@ public class LottoMatcher {
         return winningMap;
     }
 
-    private void correctNumberMapping(Map<String, Integer> matchingNumbers, int currentNumber) {
-        switch (currentNumber) {
+    private void correctNumberMapping(Map<String, Integer> matchingNumbers, int correctCount) {
+        switch (correctCount) {
             case 3:
                 matchingNumbers.put("3개 일치 (5,000원)", matchingNumbers.getOrDefault("3개 일치 (5,000원)", 0) + 1);
                 break;
