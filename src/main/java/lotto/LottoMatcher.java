@@ -1,7 +1,8 @@
 package lotto;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class LottoMatcher {
     private final Lotto answerLotto;
@@ -23,5 +24,14 @@ public class LottoMatcher {
 
     public List<Integer> countMatchingNumbers(LottoPaper lottoPaper) {
         return lottoPaper.compareAnswerLottoNumbers(answerLotto, bonusNumber);
+    }
+
+    public Map<Integer, Integer> countMatchingNumbersAsMap(List<Integer> correctNumbers) {
+        return correctNumbers.stream()
+                .filter(correctNumber -> correctNumber < 6)
+                .collect(Collectors.groupingBy(
+                        correctNumber -> correctNumber,
+                        Collectors.summingInt(value -> 1)
+                ));
     }
 }

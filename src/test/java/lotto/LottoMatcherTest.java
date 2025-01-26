@@ -8,7 +8,9 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Stream;
 
 class LottoMatcherTest {
@@ -79,6 +81,39 @@ class LottoMatcherTest {
                         )),
                         new Lotto(List.of(1, 2, 3, 4, 5, 6)),
                         List.of(1, 2, 6)
+                )
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("provideCorrectLottoNumber")
+    void 당첨_결과를_확인하기_위해_등수_발표(List<Integer> correctNumbers, Map<Integer, Integer> expected) {
+        LottoMatcher lottoMatcher = new LottoMatcher(new Lotto(List.of(1, 2, 3, 4, 5, 6)));
+
+        Assertions.assertThat(lottoMatcher.countMatchingNumbersAsMap(correctNumbers))
+                .isEqualTo(expected);
+    }
+
+    private static Stream<Arguments> provideCorrectLottoNumber() {
+        return Stream.of(
+                Arguments.of(
+                        List.of(1, 2, 3, 4, 5, 6),
+                        Map.of(
+                                1, 1,
+                                2, 1,
+                                3, 1,
+                                4, 1,
+                                5, 1
+                        )
+                ),
+                Arguments.of(
+                        List.of(1, 2, 3, 3, 5, 6),
+                        Map.of(
+                                1, 1,
+                                2, 1,
+                                3, 2,
+                                5, 1
+                        )
                 )
         );
     }
