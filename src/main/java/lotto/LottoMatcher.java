@@ -22,6 +22,6 @@ public class LottoMatcher {
     }
 
     public List<Integer> countMatchingNumbers(LottoPaper lottoPaper) {
-        return lottoPaper.compareAnswerLottoNumbers(answerLotto);
+        return lottoPaper.compareAnswerLottoNumbers(answerLotto, bonusNumber);
     }
 }

@@ -42,13 +42,19 @@ public class Lotto {
         }
     }
 
-    public int countMatchingNumbers(Lotto compareLotto) {
+    public int countMatchingNumbers(Lotto compareLotto, Number bonusNumber) {
         Set<Number> lottoSet = new HashSet<>(this.numbers);
         Set<Number> answerLottoSet = new HashSet<>(compareLotto.numbers);
 
         lottoSet.retainAll(answerLottoSet);
 
-        return lottoSet.size();
+        int correctCount = lottoSet.size();
+
+        if (correctCount != 6 && numbers.contains(bonusNumber)) {
+            correctCount++;
+        }
+
+        return correctCount;
     }
 
     public List<Number> getNumbers() {

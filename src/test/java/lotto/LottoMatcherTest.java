@@ -60,6 +60,26 @@ class LottoMatcherTest {
         );
     }
 
+    @ParameterizedTest
+    @MethodSource("provideLottoListAndAnswerLotto2")
+    void 보너스_값도_확인하여_정확한_당첨_갯수_확인(LottoPaper lottoPaper, Lotto answerLotto, List<Integer> expected) {
+        LottoMatcher lottoMatcher = new LottoMatcher(answerLotto);
+        lottoMatcher.insertBonusNumber("7");
 
+        Assertions.assertThat(lottoMatcher.countMatchingNumbers(lottoPaper)).isEqualTo(expected);
+    }
 
+    private static Stream<Arguments> provideLottoListAndAnswerLotto2() {
+        return Stream.of(
+                Arguments.of(
+                        new LottoPaper(List.of(
+                                new Lotto(List.of(1, 12, 8, 9, 10, 11)),
+                                new Lotto(List.of(1, 7, 8, 9, 10, 11)),
+                                new Lotto(List.of(1, 2, 3, 4, 5, 6))
+                        )),
+                        new Lotto(List.of(1, 2, 3, 4, 5, 6)),
+                        List.of(1, 2, 6)
+                )
+        );
+    }
 }
