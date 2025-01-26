@@ -19,6 +19,10 @@ public class LottoMoneyValidator {
         return parseInt(inputBonusNumber);
     }
 
+    public static int validateInputAmount(String inputAmount) {
+        return parseInt(inputAmount);
+    }
+
     private static int parseInt(String input) {
         if (input.contains(".")) {
             throw new IllegalArgumentException("소수점 값은 입력할 수 없습니다");

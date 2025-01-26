@@ -22,6 +22,12 @@ class LottoMoneyValidatorTest {
                 .hasMessage(expectedMessage);
     }
 
+    private void assertThrowWithMessageByChangeInputAmount(String inputAmount, String expectedMessage) {
+        Assertions.assertThatThrownBy(() -> LottoMoneyValidator.validateInputAmount(inputAmount))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(expectedMessage);
+    }
+
     @Nested
     @DisplayName("금액 입력값 검증 테스트")
     class MoneyTest {
@@ -87,4 +93,26 @@ class LottoMoneyValidatorTest {
         }
     }
 
+
+    @Nested
+    @DisplayName("사용자 금액 입력값 검증 테스트")
+    class AmountTest {
+        @ParameterizedTest
+        @ValueSource(strings = {"-1000", "-1", "-999", "-5000"})
+        void 음수의_값으로_들어오면_예외_발생(String inputAmount) {
+            assertThrowWithMessageByChangeInputAmount(inputAmount, "양수의 금액을 입력해주세요");
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = {"abcd", "금액", "one", "!@#", "1000원", "천원", "one thousand", "1234,56", "", " "})
+        void 숫자가_아닌_다른_값을_입력하면_예외_발생(String inputAmount) {
+            assertThrowWithMessageByChangeInputAmount(inputAmount, "정상적인 금액을 입력해주세요");
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = {"1000.5", "0.001", "1234.56", "-1000.5"})
+        void 소수_값으로_들어오면_예외_발생(String inputAmount) {
+            assertThrowWithMessageByChangeInputAmount(inputAmount, "소수점 값은 입력할 수 없습니다");
+        }
+    }
 }
