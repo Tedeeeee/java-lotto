@@ -50,7 +50,7 @@ public class Lotto {
 
         int correctCount = lottoSet.size();
 
-        if (correctCount != 6 && numbers.contains(bonusNumber)) {
+        if (correctCount == 5 && numbers.contains(bonusNumber)) {
             correctCount++;
         }
 

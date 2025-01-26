@@ -1,14 +1,11 @@
 package lotto;
 
-import lotto.randomNumber.LottoNumberGenerator;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
@@ -76,11 +73,11 @@ class LottoMatcherTest {
                 Arguments.of(
                         new LottoPaper(List.of(
                                 new Lotto(List.of(1, 12, 8, 9, 10, 11)),
-                                new Lotto(List.of(1, 7, 8, 9, 10, 11)),
+                                new Lotto(List.of(1, 7, 2, 3, 4, 5)),
                                 new Lotto(List.of(1, 2, 3, 4, 5, 6))
                         )),
                         new Lotto(List.of(1, 2, 3, 4, 5, 6)),
-                        List.of(1, 2, 6)
+                        List.of(1, 6, 6)
                 )
         );
     }
