@@ -7,6 +7,8 @@ import java.util.Set;
 
 public class Lotto {
     private static final int LOTTO_NUMBER_SIZE = 6;
+    private static final int BONUS_NUMBER_CHECK_COUNT = 5;
+    private static final int CORRECT_WITH_BONUS_NUMBER = 7;
     private static final String LOTTO_MIN_SIZE_ERROR = "로또 번호는 6개여야 합니다";
     private static final String DUPLICATE_LOTTO_NUMBER_ERROR = "로또 번호는 중복이 될 수 없습니다";
 
@@ -53,8 +55,8 @@ public class Lotto {
 
         int correctNumberCount = lottoSet.size();
 
-        if (lottoSet.size() == 5 && numbers.contains(bonusNumber)) {
-            correctNumberCount = 7;
+        if (lottoSet.size() == BONUS_NUMBER_CHECK_COUNT && numbers.contains(bonusNumber)) {
+            correctNumberCount = CORRECT_WITH_BONUS_NUMBER;
         }
 
         return correctNumberCount;

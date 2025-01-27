@@ -1,6 +1,5 @@
 package lotto.model;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -19,7 +18,7 @@ public class LottoMatcher {
     }
 
     public void insertBonusNumber(String inputBonusNumber) {
-        int bonusNumber = LottoMoneyValidator.validateBonusNumber(inputBonusNumber);
+        int bonusNumber = LottoInputValidator.validateBonusNumber(inputBonusNumber);
         this.bonusNumber = new Number(bonusNumber);
     }
 

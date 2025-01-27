@@ -13,7 +13,7 @@ public class LottoPaper {
     }
 
     public static LottoPaper createWithCount(String inputMoney, LottoNumberGenerator numberGenerator) {
-        int lottoCount = LottoMoneyValidator.calculateLottoCount(inputMoney);
+        int lottoCount = LottoInputValidator.calculateLottoCount(inputMoney);
         return new LottoPaper(generateLottoList(lottoCount, numberGenerator));
     }
 
@@ -30,9 +30,9 @@ public class LottoPaper {
     public List<Integer> compareAnswerLottoNumbers(Lotto answerLotto, Number bonusNumber) {
         List<Integer> correctNumbers = new ArrayList<>();
 
-        for (Lotto lotto : lottos) {
+        lottos.forEach(lotto -> {
             correctNumbers.add(lotto.countMatchingNumbers(answerLotto, bonusNumber));
-        }
+        });
         return correctNumbers;
     }
 

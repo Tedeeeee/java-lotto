@@ -1,6 +1,6 @@
 package lotto;
 
-import lotto.model.LottoMoneyValidator;
+import lotto.model.LottoInputValidator;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -9,22 +9,22 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 
-class LottoMoneyValidatorTest {
+class LottoInputValidatorTest {
 
     private void assertThrowWithMessageByChangeMoney(String inputMoney, String expectedMessage) {
-        Assertions.assertThatThrownBy(() -> LottoMoneyValidator.calculateLottoCount(inputMoney))
+        Assertions.assertThatThrownBy(() -> LottoInputValidator.calculateLottoCount(inputMoney))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(expectedMessage);
     }
 
     private void assertThrowWithMessageByChangeBonusNumber(String inputBonusNumber, String expectedMessage) {
-        Assertions.assertThatThrownBy(() -> LottoMoneyValidator.validateBonusNumber(inputBonusNumber))
+        Assertions.assertThatThrownBy(() -> LottoInputValidator.validateBonusNumber(inputBonusNumber))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(expectedMessage);
     }
 
     private void assertThrowWithMessageByChangeInputAmount(String inputAmount, String expectedMessage) {
-        Assertions.assertThatThrownBy(() -> LottoMoneyValidator.validateInputAmount(inputAmount))
+        Assertions.assertThatThrownBy(() -> LottoInputValidator.validateInputAmount(inputAmount))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(expectedMessage);
     }
@@ -36,7 +36,7 @@ class LottoMoneyValidatorTest {
         @ParameterizedTest
         @CsvSource(value = {"1000, 1", "2000, 2"})
         void 정상적인_금액을_입력하면_로또의_갯수를_반환(String money, int lottoCount) {
-            Assertions.assertThat(LottoMoneyValidator.calculateLottoCount(money))
+            Assertions.assertThat(LottoInputValidator.calculateLottoCount(money))
                     .isEqualTo(lottoCount);
         }
 

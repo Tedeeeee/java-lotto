@@ -8,7 +8,7 @@ public class LottoPrizeCalculator {
     private final int amount;
 
     public LottoPrizeCalculator(String amount) {
-        this.amount = LottoMoneyValidator.validateInputAmount(amount);
+        this.amount = LottoInputValidator.validateInputAmount(amount);
     }
 
     public double calculatePrize(Map<String, Integer> correctLottoNumberMap) {

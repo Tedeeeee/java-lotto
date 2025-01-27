@@ -1,7 +1,7 @@
 package lotto.controller;
 
 import lotto.model.LottoMatcher;
-import lotto.model.LottoMoneyValidator;
+import lotto.model.LottoInputValidator;
 import lotto.model.LottoPaper;
 import lotto.model.LottoPrizeCalculator;
 import lotto.model.inputModel.InputModel;
@@ -38,12 +38,14 @@ public class LottoController {
         }
     }
 
+    // 최상위 객체1. 로또 뽑은 종이 객체 생성
     private LottoPaper initializeLottoPaper(String inputAmount) {
         LottoPaper lottoPaper = LottoPaper.createWithCount(inputAmount, lottoNumberGenerator);
         notifyLottoPurchase(lottoPaper);
         return lottoPaper;
     }
 
+    // 최상위 객체2. 로또 당첨 확인 객체 생성
     private LottoMatcher initializeLottoMatcher() {
         LottoMatcher lottoMatcher = requestWinningLottoNumbers();
         requestBonusNumber(lottoMatcher);
@@ -54,7 +56,7 @@ public class LottoController {
     private String processPurchaseAmount() {
         lottoView.requestPurchaseAmount();
         String inputAmount = inputModel.read();
-        LottoMoneyValidator.validateInputAmount(inputAmount);
+        LottoInputValidator.validateInputAmount(inputAmount);
         lottoView.nextLine();
 
         return inputAmount;
@@ -72,7 +74,7 @@ public class LottoController {
         lottoView.inputAnswerLottoNumbers();
         String answerLottoNumbers = inputModel.read();
         List<Integer> answerLottoNumberList = new ArrayList<>();
-        answerLottoNumberList = LottoMoneyValidator.splitInputAnswerLottoNumber(answerLottoNumbers);
+        answerLottoNumberList = LottoInputValidator.splitInputAnswerLottoNumber(answerLottoNumbers);
         LottoMatcher lottoMatcher = LottoMatcher.from(answerLottoNumberList);
         lottoView.nextLine();
         return lottoMatcher;
