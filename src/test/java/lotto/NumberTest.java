@@ -1,5 +1,6 @@
 package lotto;
 
+import lotto.model.Number;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -11,7 +12,7 @@ public class NumberTest {
     @Test
     @DisplayName("생성자를 통해 숫자를 받는다")
     void inputNumber() {
-        Number number = new Number(10);
+        lotto.model.Number number = new lotto.model.Number(10);
 
         Assertions.assertThat(number.getNumber()).isEqualTo(10);
     }
@@ -20,7 +21,7 @@ public class NumberTest {
     @DisplayName("1 ~ 45를 벗어난 숫자는 예외를 발생 시킨다")
     @ValueSource(ints = {0, 46})
     void numberRangeCheck(int rangeValue) {
-        Assertions.assertThatThrownBy(() -> new Number(rangeValue))
+        Assertions.assertThatThrownBy(() -> new lotto.model.Number(rangeValue))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("1 ~ 45 사이의 값을 입력해주세요");
     }

@@ -1,5 +1,7 @@
 package lotto;
 
+import lotto.model.Lotto;
+import lotto.model.Number;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -38,7 +40,7 @@ class LottoTest {
 
         Lotto lotto = new Lotto(validNumbers);
 
-        List<Number> validate = validNumbers.stream().map(Number::new).toList();
+        List<lotto.model.Number> validate = validNumbers.stream().map(lotto.model.Number::new).toList();
         Assertions.assertThat(lotto.getNumbers()).isEqualTo(validate);
     }
 
@@ -49,7 +51,7 @@ class LottoTest {
         Lotto lotto = new Lotto(descValidNumbers);
 
         List<Integer> ascValidNumbers = List.of(1, 2, 3, 4, 5, 6);
-        List<Number> validate = ascValidNumbers.stream().map(Number::new).toList();
+        List<lotto.model.Number> validate = ascValidNumbers.stream().map(Number::new).toList();
 
         Assertions.assertThat(lotto.getNumbers()).isEqualTo(validate);
     }

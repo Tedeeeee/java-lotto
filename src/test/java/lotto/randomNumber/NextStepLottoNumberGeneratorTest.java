@@ -1,5 +1,7 @@
 package lotto.randomNumber;
 
+import lotto.model.randomNumber.LottoNumberGenerator;
+import lotto.model.randomNumber.NextStepLottoNumberGenerator;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;

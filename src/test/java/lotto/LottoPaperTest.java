@@ -1,7 +1,9 @@
 package lotto;
 
-import lotto.randomNumber.LottoNumberGenerator;
-import lotto.randomNumber.NextStepLottoNumberGenerator;
+import lotto.model.Lotto;
+import lotto.model.LottoPaper;
+import lotto.model.randomNumber.LottoNumberGenerator;
+import lotto.model.randomNumber.NextStepLottoNumberGenerator;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;

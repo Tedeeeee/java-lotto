@@ -1,6 +1,6 @@
-package lotto;
+package lotto.model;
 
-import lotto.randomNumber.LottoNumberGenerator;
+import lotto.model.randomNumber.LottoNumberGenerator;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package lotto;
+package lotto.model;
 
 public class LottoMoneyValidator {
     private static final int LOTTO_PRICE_UNIT = 1000;
