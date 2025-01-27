@@ -3,6 +3,7 @@ package lotto.model;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class LottoMatcher {
     private final Lotto answerLotto;
@@ -35,7 +36,7 @@ public class LottoMatcher {
     }
 
     private Map<String, Integer> initializeWinningMap() {
-        Map<String, Integer> winningMap = new HashMap<>();
+        Map<String, Integer> winningMap = new TreeMap<>();
         winningMap.put("3개 일치 (5,000원)", 0);
         winningMap.put("4개 일치 (50,000원)", 0);
         winningMap.put("5개 일치 (1,500,000원)", 0);

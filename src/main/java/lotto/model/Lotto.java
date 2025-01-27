@@ -60,8 +60,10 @@ public class Lotto {
         return correctNumberCount;
     }
 
-    public List<Number> getNumbers() {
-        return numbers;
+    public List<Integer> getNumbers() {
+        return numbers.stream()
+                .map(Number::getNumber)
+                .toList();
     }
 
     @Override

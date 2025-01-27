@@ -3,7 +3,7 @@ package lotto.model;
 import java.util.Objects;
 
 public class Number {
-    private static final String INVALID_NUMBER_MESSAGE = "1 ~ 45 사이의 값을 입력해주세요";
+    private static final String INVALID_NUMBER_MESSAGE = "[ERROR] 1 ~ 45 사이의 값을 입력해주세요";
     private static final int MIN_NUMBER = 1;
     private static final int MAX_NUMBER = 45;
 

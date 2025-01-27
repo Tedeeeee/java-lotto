@@ -1,7 +1,18 @@
 package lotto.model;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class LottoMoneyValidator {
     private static final int LOTTO_PRICE_UNIT = 1000;
+    private static final String SEPARATOR = ",";
+
+    // 테스트 작성 필요
+    public static List<Integer> splitInputAnswerLottoNumber(String inputNumbers) {
+        return Arrays.stream(inputNumbers.split(SEPARATOR))
+                .map(Integer::parseInt)
+                .toList();
+    }
 
     public static int calculateLottoCount(String inputMoney) {
         int money = parseInt(inputMoney);
@@ -31,7 +42,6 @@ public class LottoMoneyValidator {
         int value = 0;
         try {
             value = Integer.parseInt(input);
-
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("정상적인 금액을 입력해주세요");
         }

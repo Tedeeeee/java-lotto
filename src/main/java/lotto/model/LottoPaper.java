@@ -36,6 +36,10 @@ public class LottoPaper {
         return correctNumbers;
     }
 
+    public int purchaseLottoCount() {
+        return lottos.size();
+    }
+
     public List<Lotto> getLottos() {
         return lottos;
     }

@@ -23,7 +23,7 @@ public class NumberTest {
     void numberRangeCheck(int rangeValue) {
         Assertions.assertThatThrownBy(() -> new lotto.model.Number(rangeValue))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("1 ~ 45 사이의 값을 입력해주세요");
+                .hasMessage("[ERROR] 1 ~ 45 사이의 값을 입력해주세요");
     }
 
     @ParameterizedTest

@@ -40,8 +40,11 @@ class LottoTest {
 
         Lotto lotto = new Lotto(validNumbers);
 
-        List<lotto.model.Number> validate = validNumbers.stream().map(lotto.model.Number::new).toList();
-        Assertions.assertThat(lotto.getNumbers()).isEqualTo(validate);
+        List<Number> validate = validNumbers.stream()
+                .map(Number::new)
+                .toList();
+
+        Assertions.assertThat(lotto.getNumbers()).isEqualTo(validNumbers);
     }
 
     @Test
@@ -53,6 +56,6 @@ class LottoTest {
         List<Integer> ascValidNumbers = List.of(1, 2, 3, 4, 5, 6);
         List<lotto.model.Number> validate = ascValidNumbers.stream().map(Number::new).toList();
 
-        Assertions.assertThat(lotto.getNumbers()).isEqualTo(validate);
+        Assertions.assertThat(lotto.getNumbers()).isEqualTo(ascValidNumbers);
     }
 }
